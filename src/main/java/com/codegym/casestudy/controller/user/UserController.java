@@ -49,7 +49,7 @@ public class UserController {
         return ResponseEntity.ok(new JwtResponse(jwt, currentUser.getId(), userDetails.getUsername(), currentUser.getLastName(), userDetails.getAuthorities()));
     }
 
-    @GetMapping("/register")
+    @PostMapping("/register")
     public ResponseEntity<User> registerAccount(@RequestBody @Valid User user) {
         userService.save(user);
         return new ResponseEntity<>(userService.findById(user.getId()).get(),HttpStatus.OK);
