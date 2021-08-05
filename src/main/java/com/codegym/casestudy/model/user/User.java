@@ -18,7 +18,7 @@ public class User {
     private String username;
     private String password;
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "Roles_Users" ,joinColumns = @JoinColumn(name = "user_id"),
+    @JoinTable(name = "roles_users" ,joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
 
     private List<Role> roles;

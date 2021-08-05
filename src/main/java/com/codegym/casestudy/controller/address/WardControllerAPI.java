@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/wards")
+@RequestMapping("/api")
 @CrossOrigin("*")
 public class WardControllerAPI {
     @Autowired
@@ -18,22 +18,22 @@ public class WardControllerAPI {
     @Autowired
     private DistrictServiceImpl districtService;
 
-    @GetMapping("/{name}/wards")
-    public ResponseEntity<Iterable<Ward>> findAllByDistrictName(@PathVariable String name) {
+    @GetMapping("/{id}/wards")
+    public ResponseEntity<Iterable<Ward>> findAllByDistrictName(@PathVariable long id) {
         for(District district: districtService.findAll()) {
-            if (district.getDicName().equals(name)) {
-                Iterable<Ward> wards = wardService.findAllByDistrict(name);
+            if (district.getId() == id ) {
+                Iterable<Ward> wards = wardService.findAllByDistrictId(district.getId());
                 return new ResponseEntity<>(wards, HttpStatus.OK);
             }
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    @PostMapping("")
+    @PostMapping("/wards")
     public ResponseEntity<Void> create (@RequestBody Ward ward) {
         wardService.save(ward);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    @GetMapping("")
+    @GetMapping("/wards")
     public ResponseEntity<Iterable<Ward>> findAll() {
         Iterable<Ward> wards = wardService.findAll();
         return new ResponseEntity<>(wards,HttpStatus.OK);

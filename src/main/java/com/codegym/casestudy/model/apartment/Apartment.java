@@ -19,6 +19,7 @@ public class Apartment {
     private String address;
     private String ward;
     private String district;
+    private int price;
     @ManyToOne
     private ApartmentType type;
     @ManyToOne

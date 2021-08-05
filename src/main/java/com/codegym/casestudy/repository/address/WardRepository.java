@@ -6,7 +6,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface WardRepository extends PagingAndSortingRepository<Ward,Long> {
 
-    @Query("select ward from Ward ward where ward.district.id = ?1 ")
-    Iterable<Ward> findAllByDistrict(String name);
+    @Query("select ward from Ward ward where ward.district.id =?1 ")
+    Iterable<Ward> findAllByDistrictId(long id);
 
 }

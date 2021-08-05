@@ -34,7 +34,7 @@ public class WardServiceImpl implements IWardService {
     }
 
     @Override
-    public Iterable<Ward> findAllByDistrict(String name) {
-        return wardRepository.findAllByDistrict(name);
+    public Iterable<Ward> findAllByDistrictId(long id) {
+        return wardRepository.findAllByDistrictId(id);
     }
 }
