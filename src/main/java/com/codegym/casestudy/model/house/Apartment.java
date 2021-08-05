@@ -22,6 +22,7 @@ public class Apartment {
     @ManyToOne
     private User user;
 
+
     public Apartment(String titleName, int quantityRoom, int floor, String description, String address, ApartmentType type) {
         this.titleName = titleName;
         this.quantityRoom = quantityRoom;

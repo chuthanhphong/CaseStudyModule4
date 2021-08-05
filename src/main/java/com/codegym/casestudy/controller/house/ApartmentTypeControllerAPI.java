@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/apartment-types")
 @CrossOrigin("*")
-public class ApartmentTypeController {
+public class ApartmentTypeControllerAPI {
     @Autowired
     private IApartmentType apartmentTypeService;
 
