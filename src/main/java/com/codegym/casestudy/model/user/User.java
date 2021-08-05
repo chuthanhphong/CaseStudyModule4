@@ -1,54 +1,57 @@
 package com.codegym.casestudy.model.user;
 
-
-import org.springframework.lang.Nullable;
-
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table
-public class User implements Serializable {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private static Long id;
-
+    private Long id;
     private String firstName;
     private String lastName;
-    private String gender;
     private String email;
-    private Long phoneNumber;
+    private String phoneNumber;
     private String image;
     private String address;
+    private String username;
+    private String password;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "Roles_Users" ,joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
 
-    private static String username;
-
-    @Column(nullable = false)
-    private static String password;
-
+    private Set<Role> roles;
 
     public User() {
     }
 
-    public User(Long id, String firstName, String lastName, String gender, String email, Long phoneNumber, String image, String address, String username, String password, Set<Role> roles) {
-        this.id = id;
+    public User( String firstName, String lastName, String email, String phoneNumber, String image, String address, String username, String password) {
+
         this.firstName = firstName;
         this.lastName = lastName;
-        this.gender = gender;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.image = image;
         this.address = address;
         this.username = username;
         this.password = password;
-
     }
 
-    public static Long getId() {
+    public User(String firstName, String lastName, String email, String phoneNumber, String image, String address, String username, String password, Set<Role> roles) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.image = image;
+        this.address = address;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -72,14 +75,6 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -88,11 +83,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public Long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -112,7 +107,7 @@ public class User implements Serializable {
         this.address = address;
     }
 
-    public static String getUsername() {
+    public String getUsername() {
         return username;
     }
 
@@ -120,7 +115,7 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public static String getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -128,4 +123,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 }

@@ -1,8 +1,10 @@
 package com.codegym.casestudy.service.User;
 
 
-import com.codegym.casestudy.model.user.User;
 
+
+import com.codegym.casestudy.model.user.User;
+import com.codegym.casestudy.model.user.UserPrinciple;
 import com.codegym.casestudy.repository.user.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -43,18 +45,18 @@ public class UserService implements IUserService {
 
 
 
+
     @Override
     public Optional<User> findByUserName(String username) {
         return userRepository.findByUsername(username);
     }
 
-@Override
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> userOptional = userRepository.findByUsername(username);
         if (!userOptional.isPresent()){
             throw new UsernameNotFoundException(username);
         }
-//        return UserPrinciple.build(userOptional.get());
-    return null;
-//    }
-}}
+        return UserPrinciple.build(userOptional.get());
+    }
+}

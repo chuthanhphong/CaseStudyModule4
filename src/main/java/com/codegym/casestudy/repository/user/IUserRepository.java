@@ -1,6 +1,5 @@
 package com.codegym.casestudy.repository.user;
 
-import com.codegym.casestudy.model.user.Role;
 import com.codegym.casestudy.model.user.User;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
