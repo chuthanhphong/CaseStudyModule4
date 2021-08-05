@@ -1,44 +1,54 @@
 package com.codegym.casestudy.model.user;
 
+
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private static Long id;
+
     private String firstName;
     private String lastName;
+    private String gender;
     private String email;
     private Long phoneNumber;
     private String image;
     private String address;
-    private String username;
-    private String password;
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "Roles_Users" ,joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
 
-    private List<Role> roles;
+    private static String username;
+
+    @Column(nullable = false)
+    private static String password;
+
 
     public User() {
     }
 
-    public User( String firstName, String lastName, String email, Long phoneNumber, String image, String address, String username, String password) {
-
+    public User(Long id, String firstName, String lastName, String gender, String email, Long phoneNumber, String image, String address, String username, String password, Set<Role> roles) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.gender = gender;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.image = image;
         this.address = address;
         this.username = username;
         this.password = password;
+
     }
 
-    public Long getId() {
+    public static Long getId() {
         return id;
     }
 
@@ -60,6 +70,14 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getEmail() {
@@ -94,7 +112,7 @@ public class User {
         this.address = address;
     }
 
-    public String getUsername() {
+    public static String getUsername() {
         return username;
     }
 
@@ -102,7 +120,7 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
+    public static String getPassword() {
         return password;
     }
 
@@ -110,11 +128,4 @@ public class User {
         this.password = password;
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
 }

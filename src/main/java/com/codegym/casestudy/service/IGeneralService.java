@@ -1,5 +1,7 @@
 package com.codegym.casestudy.service;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Optional;
 
 public interface IGeneralService<T> {
@@ -7,4 +9,5 @@ public interface IGeneralService<T> {
     Optional<T> findById(Long id);
     T save(T t);
     void delete(Long id);
+
 }

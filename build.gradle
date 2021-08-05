@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.codegym'
+group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
@@ -13,18 +13,21 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
+    implementation   'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation  'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation  'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation  'org.springframework.boot:spring-boot-starter-web'
     runtimeOnly 'mysql:mysql-connector-java'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
+
+
+    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '1.2.0.RELEASE'
+    implementation group: 'org.springframework.security', name: 'spring-security-web', version: '5.4.2'
+    implementation group: 'org.springframework.security', name: 'spring-security-config', version: '5.4.2'
+    implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.4.2'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.1'
 }
 
-    test {
-        useJUnitPlatform()
-    }
+test {
+    useJUnitPlatform()
+}
