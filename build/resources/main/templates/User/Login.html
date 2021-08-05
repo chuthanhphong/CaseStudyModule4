@@ -393,7 +393,7 @@
 
     <button class="form-submit">Đăng nhập</button>
     <div id="form">
-        <button onclick="signUp()" class="form-submit">Đăng Ký</button>
+        <button onclick="SignUpform()" class="form-submit">Đăng Ký</button>
     </div>
 
 </form>
@@ -442,17 +442,6 @@
 </script>
 <script>
     // Đối tượng `Validator`
-    function Validator(options) {
-        function getParent(element, selector) {
-            while (element.parentElement) {
-                if (element.parentElement.matches(selector)) {
-                    return element.parentElement;
-                }
-                element = element.parentElement;
-            }
-        }
-
-        var selectorRules = {};
 
         // Hàm thực hiện validate
         function validate(inputElement, rule) {
@@ -571,7 +560,7 @@
                     }
                 });
             });
-        }
+        
 
     }
 
