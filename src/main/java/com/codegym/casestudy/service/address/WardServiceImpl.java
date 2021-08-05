@@ -10,30 +10,31 @@ import java.util.Optional;
 
 @Service
 public class WardServiceImpl implements IWardService {
-
+    @Autowired
+    private WardRepository wardRepository;
 
     @Override
     public Iterable<Ward> findAll() {
-        return null;
+        return wardRepository.findAll();
     }
 
     @Override
     public Optional<Ward> findById(Long id) {
-        return Optional.empty();
+        return wardRepository.findById(id);
     }
 
     @Override
     public Ward save(Ward ward) {
-        return null;
+        return wardRepository.save(ward);
     }
 
     @Override
     public void delete(Long id) {
-
+        wardRepository.deleteById(id);
     }
 
     @Override
     public Iterable<Ward> findAllByDistrict(String name) {
-        return null;
+        return wardRepository.findAllByDistrict(name);
     }
 }
