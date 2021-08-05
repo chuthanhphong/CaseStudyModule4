@@ -1,7 +1,6 @@
 package com.codegym.casestudy.controller.house;
 
-import com.codegym.casestudy.model.house.Apartment;
-import com.codegym.casestudy.model.house.ApartmentType;
+import com.codegym.casestudy.model.apartment.Apartment;
 import com.codegym.casestudy.service.house.IApartment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -64,5 +63,6 @@ public class ApartmentControllerAPI {
         Iterable<Apartment> foundList = apartmentService.findAllByFloorIs(floor);
         return new ResponseEntity<>(foundList,HttpStatus.OK);
     }
+
 
 }

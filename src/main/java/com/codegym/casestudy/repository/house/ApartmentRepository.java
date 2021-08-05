@@ -1,6 +1,6 @@
 package com.codegym.casestudy.repository.house;
 
-import com.codegym.casestudy.model.house.Apartment;
+import com.codegym.casestudy.model.apartment.Apartment;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,6 @@
 package com.codegym.casestudy.service.house;
 
-import com.codegym.casestudy.model.house.Apartment;
+import com.codegym.casestudy.model.apartment.Apartment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

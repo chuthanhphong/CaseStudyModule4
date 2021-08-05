@@ -1,4 +1,4 @@
-package com.codegym.casestudy.model.house;
+package com.codegym.casestudy.model.apartment;
 
 import lombok.Getter;
 import lombok.Setter;

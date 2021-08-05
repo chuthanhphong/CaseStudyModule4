@@ -1,4 +1,4 @@
-package com.codegym.casestudy.model.place;
+package com.codegym.casestudy.model.address;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,10 +14,10 @@ public class District {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String name;
+    private String dicName;
 
     public District(String name) {
-        this.name = name;
+        this.dicName = name;
     }
 
     public District() {
