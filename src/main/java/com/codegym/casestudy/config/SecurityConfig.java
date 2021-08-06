@@ -60,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         // Các trang không yêu cầu login
-        http.authorizeRequests().antMatchers("/", "/login", "/logout").permitAll();
+        http.authorizeRequests().antMatchers("/api/**").permitAll();
 
         // Trang /userInfo yêu cầu phải login với vai trò ROLE_USER hoặc ROLE_ADMIN.
         // Nếu chưa login, nó sẽ redirect tới trang /login.
@@ -68,20 +68,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Trang chỉ dành cho ADMIN
         http.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
+        http.authorizeRequests().antMatchers("/user").access("hasRole('ROLE_User')");
+
 
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 
         // Cấu hình cho Login Form.
-        http.authorizeRequests().and().formLogin()//
-                // Submit URL của trang login
-                .loginProcessingUrl("/j_spring_security_check") // Submit URL
-                .loginPage("/login")//
-                .defaultSuccessUrl("/userAccountInfo")//
-                .failureUrl("/login?error=true")//
-                .usernameParameter("username")//
-                .passwordParameter("password")
-                // Cấu hình cho Logout Page.
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
+//        http.authorizeRequests().and().formLogin()//
+//                // Submit URL của trang login
+//                .loginProcessingUrl("/j_spring_security_check") // Submit URL
+//                .loginPage("/login")//
+//                .defaultSuccessUrl("/userAccountInfo")//
+//                .failureUrl("/login?error=true")//
+//                .usernameParameter("username")//
+//                .passwordParameter("password")
+//                // Cấu hình cho Logout Page.
+//                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
 
         // Cấu hình Remember Me.
         http.authorizeRequests().and() //

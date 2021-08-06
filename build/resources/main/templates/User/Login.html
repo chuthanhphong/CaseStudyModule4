@@ -323,46 +323,41 @@
 
         <button class="form-submit" onclick="edit()">Update</button>`
         }
-        function edit(){
-            let firstname=$('#firstname').val();
-            let lastname=$('#lastname').val();
-            let email = $('#email').val();
-            let image = $('#image').val();
-            let phoneNumber =$('#phonenumber').val();
-            let address = $('#address').val();
-            let userName = $('#username').val();
-            let password = $('#password').val();
-            let user={
-                firstName: firstname,
-                lastName: lastname,
-                email:email,
-                image:image,
-                phoneNumber:phoneNumber,
-                address:address,
-                username:userName,
-                password:password,
-                roles: [{
-                    id: 2
-                }]
-            }
-            console.log(user);
+        function edit(){}
+        function showList(token) {
             $.ajax({
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-type': 'application/json'
+                type: "GET",
+                url: "http://localhost:8080/api/",
+                headers: {"Authorization": 'Bearer ' + token},
+                success: function (data) {
+                    let str = "<button type='button' onclick='SignUpform()'>Create</button>\n" +
+                        "<h1 style='margin-left: 30%'>List Product</h1>" +
+                        "<table class='table table-dark table-striped'>\n" + "<tr>\n" +
+                        "<th>FristName</th>\n" +
+                        "<th>LastName</th>\n" +
+                        "<th> Email</th>\n" +
+                        "<th>phoneNumber</th>\n" +
+                        "<th>image</th>\n" +
+                        "<th>Address</th>\n" +
+                        "<th>Username</th>\n" +
+                        "<th>Password</th>\n"
+                    "</tr>\n";
+                    for (let i = 0; i < data.length; i++) {
+                        str += "<tr><td>" + data[i].firstName;
+                        str += "</td><td>" + data[i].lastName;
+                        str += "</td><td>" + data[i].email;
+                        str += "</td><td>" + data[i].phoneNumber;
+                        str += "</td><td>" + data[i].image;
+                        str += "</td><td>" + data[i].address;
+                        str += "</td><td>" + data[i].username;
+                        str += "</td><td>" + data[i].password;
+                        str += "</td><td>" + "<img width='80px' height='40px' src='" + data[i].image + "'/>"
+                        console.log(data[i].image)
+                        str += "</td>"
+                    }
+                    str += "</table>\n";
+                    document.getElementById("form").innerHTML = str;
                 },
-                type: "PUT",
-                data: JSON.stringify(user),
-                url: "http://localhost:8080/api/edit/{id}",
-
-                success: function () {
-                    console.log("A")
-                    editform()
-                    alert("Edit Succed !")
-                },
-                error: function (error) {
-                    console.log(error)
-                }
             })
         }
     </script>

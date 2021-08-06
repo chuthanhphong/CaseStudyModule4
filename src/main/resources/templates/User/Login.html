@@ -174,8 +174,8 @@
             document.getElementById("form").innerHTML=str;
         }
         function login() {
-            let username = $("#username").val();
-            let password = $("#password").val();
+            let username = $("#username1").val();
+            let password = $("#password1").val();
             let user = {
                 "username": username,
                 "password": password
@@ -230,6 +230,7 @@
                 url: "http://localhost:8080/api/register",
 
                 success: function () {
+                    formSignin()
                     console.log("A")
                 },
                 error: function (error) {
@@ -249,17 +250,17 @@
 
     <div class="form-group">
         <label for="Username" class="form-label">UserName</label>
-        <input id="Username" name="email" type="text" placeholder="abc" class="form-control">
+        <input id="username1" name="email" type="text" placeholder="abc" class="form-control">
         <span class="form-message"></span>
     </div>
 
     <div class="form-group">
         <label for="password" class="form-label">Mật khẩu</label>
-        <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+        <input id="password1" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
         <span class="form-message"></span>
     </div>
 
-    <button class="form-submit">Đăng nhập</button>
+    <button onclick="login()" class="form-submit">Đăng nhập</button>
     <div id="form">
         <button onclick="SignUpform()" class="form-submit">Đăng Ký</button>
     </div>
