@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         * {
             padding: 0;
@@ -113,7 +114,7 @@
     </style>
     <script>
         function SignUpform(){
-            let str=`  <form class="form" id="form-1">
+            let str=`  <div class="form" id="form-1">
         <h3 class="heading">Thành viên đăng ký</h3>
         <p class="desc">Cùng nhau học lập trình miễn phí tại F8 ❤️</p>
 
@@ -151,7 +152,7 @@
             <span class="form-message"></span>
         </div>
         <div class="form-group">
-            <label for="fullname" class="form-label">UserName:/label>
+            <label for="fullname" class="form-label">UserName:</label>
             <input id="username" name="username" type="text" placeholder="VD:ltyn" class="form-control">
             <span class="form-message"></span>
         </div>
@@ -169,7 +170,7 @@
         </div>
 
         <button class="form-submit" onclick="signUp()">Đăng ký</button>
-    </form>`
+    </div>`
             document.getElementById("form").innerHTML=str;
         }
         function login() {
@@ -188,10 +189,10 @@
                 url: "http://localhost:8080/api/login",
                 data: JSON.stringify(user),
                 success: function (data) {
-                    // console.log(data);
-                    // console.log(data.accessToken)
-                    // localStorage.setItem('token', data.accessToken)
-                    // showList(data.accessToken)
+                    console.log(data);
+                    console.log(data.accessToken)
+                    localStorage.setItem('token', data.accessToken)
+                    showList(data.accessToken)
                 }
 
             })
@@ -240,7 +241,7 @@
 
         }
         function formSignin(){
-            let str = `<div class="main"> <form action="" method="POST" class="form" id="form-2">
+            let str = `<div class="main"> <div class="form" id="form-2">
     <h3 class="heading">Đăng nhập</h3>
     <p class="desc">Cùng nhau học lập trình miễn phí tại F8 ❤️</p>
 
@@ -263,7 +264,7 @@
         <button onclick="SignUpform()" class="form-submit">Đăng Ký</button>
     </div>
 
-</form>
+</div>
 
 </div>
 `
