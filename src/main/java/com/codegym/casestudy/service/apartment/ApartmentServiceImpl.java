@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class ApartmentServiceImpl implements IApartment{
+public class ApartmentServiceImpl implements IApartment {
     @Autowired
     private ApartmentRepository apartmentRepository;
 
@@ -62,5 +62,10 @@ public class ApartmentServiceImpl implements IApartment{
     @Override
     public Iterable<Apartment> findAllByWard(String ward) {
         return apartmentRepository.findAllByWardContaining(ward);
+    }
+
+    @Override
+    public Iterable<Apartment> findAllByPrice(int low, int high) {
+        return apartmentRepository.findAllByPriceBetween(low, high);
     }
 }

@@ -20,6 +20,8 @@ public interface ApartmentRepository extends PagingAndSortingRepository<Apartmen
 
     Iterable<Apartment> findAllByDistrictContaining(String district);
 
+    Iterable<Apartment> findAllByPriceBetween(int low, int high);
+
 
 
 }

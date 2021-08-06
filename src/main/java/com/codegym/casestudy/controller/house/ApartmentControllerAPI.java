@@ -88,5 +88,11 @@ public class ApartmentControllerAPI {
         return new ResponseEntity<>(foundList, HttpStatus.OK);
     }
 
+    @GetMapping("/findByPrice/{low}/{high}")
+    public ResponseEntity<Iterable<Apartment>> findAllByPrice(@PathVariable int low, @PathVariable int high) {
+        Iterable<Apartment> foundList = apartmentService.findAllByPrice(low, high);
+        return new ResponseEntity<>(foundList, HttpStatus.OK);
+    }
+
 
 }
