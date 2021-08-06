@@ -27,10 +27,10 @@ public class ApartmentControllerAPI {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping("/{id}/detail")
-    public ResponseEntity<Void> detail(@PathVariable long id) {
+    public ResponseEntity<Optional<Apartment>> detail(@PathVariable long id) {
         Optional<Apartment> selectedApartment = apartmentService.findById(id);
         if(selectedApartment.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(selectedApartment,HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

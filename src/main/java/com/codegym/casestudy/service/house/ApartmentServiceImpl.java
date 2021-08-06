@@ -1,6 +1,7 @@
 package com.codegym.casestudy.service.house;
 
 import com.codegym.casestudy.model.apartment.Apartment;
+import com.codegym.casestudy.repository.house.ApartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,40 +12,40 @@ import java.util.Optional;
 @Service
 public class ApartmentServiceImpl implements IApartment{
     @Autowired
-    private IApartment apartmentService;
+    private ApartmentRepository apartmentRepository;
 
     @Override
     public Iterable<Apartment> findAll() {
-        return apartmentService.findAll();
+        return apartmentRepository.findAll();
     }
 
     @Override
     public Optional<Apartment> findById(Long id) {
-        return apartmentService.findById(id);
+        return apartmentRepository.findById(id);
     }
 
     @Override
     public Apartment save(Apartment apartment) {
-        return apartmentService.save(apartment);
+        return apartmentRepository.save(apartment);
     }
 
     @Override
     public void delete(Long id) {
-        apartmentService.delete(id);
+        apartmentRepository.deleteById(id);
     }
 
     @Override
     public Page<Apartment> findAll(Pageable pageable) {
-        return apartmentService.findAll(pageable);
+        return apartmentRepository.findAll(pageable);
     }
 
     @Override
     public Iterable<Apartment> findAllByQuantityRoom(int room) {
-        return apartmentService.findAllByQuantityRoom(room);
+        return apartmentRepository.findAllByQuantityRoom(room);
     }
 
     @Override
     public Iterable<Apartment> findAllByFloorIs(int floor) {
-        return apartmentService.findAllByFloorIs(floor);
+        return apartmentRepository.findAllByFloorIs(floor);
     }
 }
