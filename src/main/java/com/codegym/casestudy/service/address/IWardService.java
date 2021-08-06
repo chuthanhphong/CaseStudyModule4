@@ -4,5 +4,5 @@ import com.codegym.casestudy.model.address.Ward;
 import com.codegym.casestudy.service.IGeneralService;
 
 public interface IWardService extends IGeneralService<Ward> {
-    Iterable<Ward> findAllByDistrict(String name);
+    Iterable<Ward> findAllByDistrictId(long id);
 }
