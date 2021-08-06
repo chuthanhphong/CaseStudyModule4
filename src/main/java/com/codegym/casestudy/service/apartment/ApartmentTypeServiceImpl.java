@@ -1,4 +1,4 @@
-package com.codegym.casestudy.service.house;
+package com.codegym.casestudy.service.apartment;
 
 import com.codegym.casestudy.model.apartment.ApartmentType;
 import com.codegym.casestudy.repository.house.ApartmentTypeRepository;

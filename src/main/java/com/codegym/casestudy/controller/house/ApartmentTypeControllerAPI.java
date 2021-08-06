@@ -1,7 +1,7 @@
 package com.codegym.casestudy.controller.house;
 
 import com.codegym.casestudy.model.apartment.ApartmentType;
-import com.codegym.casestudy.service.house.IApartmentType;
+import com.codegym.casestudy.service.apartment.IApartmentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
