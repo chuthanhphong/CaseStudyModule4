@@ -6,7 +6,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface IApartment extends IGeneralService<Apartment> {
-    Page<Apartment>findAll(Pageable pageable);
+    Page<Apartment> findAll(Pageable pageable);
+
     Iterable<Apartment> findAllByQuantityRoom(int room);
+
     Iterable<Apartment> findAllByFloorIs(int floor);
+
+    Iterable<Apartment> findAllByDistrict(String district);
+
+    Iterable<Apartment> findAllByAddress(String address);
+
+    Iterable<Apartment> findAllByWard(String ward);
 }

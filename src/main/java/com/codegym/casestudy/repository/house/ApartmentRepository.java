@@ -14,4 +14,12 @@ public interface ApartmentRepository extends PagingAndSortingRepository<Apartmen
     @Query("select apartment from Apartment  apartment where  apartment.floor >=?1 ")
     Iterable<Apartment> findAllByFloorIs(int floor);
 
+    Iterable<Apartment> findAllByAddressContaining(String address);
+
+    Iterable<Apartment> findAllByWardContaining(String ward);
+
+    Iterable<Apartment> findAllByDistrictContaining(String district);
+
+
+
 }
