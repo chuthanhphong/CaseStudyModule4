@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -52,6 +53,27 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<User> registerAccount(@RequestBody @Valid User user) {
         userService.save(user);
-        return new ResponseEntity<>(userService.findById(user.getId()).get(),HttpStatus.OK);
+        return new ResponseEntity<>(userService.findById(user.getId()).get(), HttpStatus.OK);
+    }
+
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<User> EditAcount(@PathVariable Long id, @RequestBody User user) {
+        Optional<User> userOptional = userService.findById(id);
+        if (!userOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        user.setId(userOptional.get().getId());
+        return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity deleteAccount(@PathVariable Long id){
+        Optional<User> userOptional = userService.findById(id);
+        if (!userOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        userService.delete(id);
+
+        return new ResponseEntity<>( HttpStatus.OK);
     }
 }
