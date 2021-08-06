@@ -22,12 +22,19 @@ public class User {
     @JoinTable(name = "Roles_Users" ,joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
 
+
     private Set<Role> roles;
 
     public User() {
     }
 
-    public User( String firstName, String lastName, String email, String phoneNumber, String image, String address, String username, String password) {
+    public User(String lastName, String username, String password) {
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(String firstName, String lastName, String email, String phoneNumber, String image, String address, String username, String password) {
 
         this.firstName = firstName;
         this.lastName = lastName;

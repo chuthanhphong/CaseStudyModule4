@@ -4,9 +4,11 @@ import com.codegym.casestudy.model.user.JwtResponse;
 import com.codegym.casestudy.model.user.User;
 import com.codegym.casestudy.service.User.IUserService;
 import com.codegym.casestudy.service.jwt.JwtService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -30,6 +32,7 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
+
 
     @GetMapping("")
     public ResponseEntity<Iterable<User>> showListUser() {
@@ -67,13 +70,17 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity deleteAccount(@PathVariable Long id){
+    public ResponseEntity deleteAccount(@PathVariable Long id) {
         Optional<User> userOptional = userService.findById(id);
         if (!userOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         userService.delete(id);
 
-        return new ResponseEntity<>( HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
+
+
 }
