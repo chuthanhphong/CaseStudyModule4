@@ -55,12 +55,12 @@ public class ApartmentServiceImpl implements IApartment {
     }
 
     @Override
-    public Iterable<Apartment> findAllByAddress(String address) {
+    public Iterable<Apartment> findByAddress(String address) {
         return apartmentRepository.findAllByAddressContaining(address);
     }
 
     @Override
-    public Iterable<Apartment> findAllByWard(String ward) {
+    public Iterable<Apartment> findByWard(String ward) {
         return apartmentRepository.findAllByWardContaining(ward);
     }
 

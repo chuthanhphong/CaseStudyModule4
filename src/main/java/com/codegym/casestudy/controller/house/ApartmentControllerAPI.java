@@ -71,8 +71,8 @@ public class ApartmentControllerAPI {
     }
 
     @GetMapping("/findByAddress/{address}")
-    public ResponseEntity<Iterable<Apartment>> findAllByAddress(@PathVariable String address) {
-        Iterable<Apartment> foundList = apartmentService.findAllByAddress(address);
+    public ResponseEntity<Iterable<Apartment>> findByAddress(@PathVariable String address) {
+        Iterable<Apartment> foundList = apartmentService.findByAddress(address);
         return new ResponseEntity<>(foundList, HttpStatus.OK);
     }
 
@@ -83,8 +83,8 @@ public class ApartmentControllerAPI {
     }
 
     @GetMapping("/findByWard/{ward}")
-    public ResponseEntity<Iterable<Apartment>> findAllByWard(@PathVariable String ward) {
-        Iterable<Apartment> foundList = apartmentService.findAllByWard(ward);
+    public ResponseEntity<Iterable<Apartment>> findByWard(@PathVariable String ward) {
+        Iterable<Apartment> foundList = apartmentService.findByWard(ward);
         return new ResponseEntity<>(foundList, HttpStatus.OK);
     }
 
@@ -93,4 +93,5 @@ public class ApartmentControllerAPI {
         Iterable<Apartment> foundList = apartmentService.findAllByPrice(low, high);
         return new ResponseEntity<>(foundList, HttpStatus.OK);
     }
+
 }

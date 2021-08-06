@@ -14,9 +14,9 @@ public interface IApartment extends IGeneralService<Apartment> {
 
     Iterable<Apartment> findAllByDistrict(String district);
 
-    Iterable<Apartment> findAllByAddress(String address);
+    Iterable<Apartment> findByAddress(String address);
 
-    Iterable<Apartment> findAllByWard(String ward);
+    Iterable<Apartment> findByWard(String ward);
 
     Iterable<Apartment> findAllByPrice(int low, int high);
 }
