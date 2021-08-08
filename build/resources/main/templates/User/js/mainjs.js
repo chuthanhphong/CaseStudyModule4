@@ -27,7 +27,7 @@ function menuComponent() {
         "        </li>\n" +
         "        <li class=\"nav-item dropdown\">\n" +
         "          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n" +
-        "            Hello ${fullname}\n" +
+        "            Hello ${data.fullname}\n" +
         "          </a>\n" +
         "          <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n" +
         "            <li><a class=\"dropdown-item\" href=\"#\">YourProfile</a></li>\n" +
