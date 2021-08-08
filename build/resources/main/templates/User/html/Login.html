@@ -198,6 +198,11 @@
                     console.log(data.accessToken)
                     localStorage.setItem('token', data.accessToken)
                     showList(data.accessToken)
+                },
+                error:
+                function (data){
+                    alert("sai tên đăng nhập hoặc mật khẩu")
+
                 }
 
             })

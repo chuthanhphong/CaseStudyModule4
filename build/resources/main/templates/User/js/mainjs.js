@@ -26,8 +26,7 @@ function menuComponent() {
         "          <a class=\"nav-link\" href=\"managerUser.html\">UserList</a>\n" +
         "        </li>\n" +
         "        <li class=\"nav-item dropdown\">\n" +
-        "          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n" +
-        "            Hello ${data.fullname}\n" +
+        "          <a class=\"nav-link dropdown-toggle\" id='data'   href=\"#\"  role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n " +
         "          </a>\n" +
         "          <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n" +
         "            <li><a class=\"dropdown-item\" href=\"#\">YourProfile</a></li>\n" +
@@ -71,5 +70,29 @@ function mainHomeComponent() {
 function mainProfileComponent() {
     let str = "<div class=\"col-12\">Trang cá nhân</div>"
     document.getElementById('main').innerHTML = str;
+}
+function loaddata() {
+    let username = $("#username1").val();
+    let password = $("#password1").val();
+    let user = {
+        "username": username,
+        "password": password
+    }
+    $.ajax({
+        headers: { "Authorization": 'Bearer ' + localStorage.getItem("token") },
+        type: "Post",
+        url: "http://localhost:8080/api/user/{id}",
+        data: JSON.stringify(user),
+        success: function (data) {
+            let str = data.name;
+            document.getElementById('data').innerHTML = str;
+            console.log(data)
+            // localStorage.getItem('token')
+
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });
 }
 

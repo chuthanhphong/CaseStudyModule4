@@ -193,11 +193,18 @@
                 url: "http://localhost:8080/api/login",
                 data: JSON.stringify(user),
                 success: function (data) {
-                    window.location.href="listUser.html";
-                    console.log(data);
+                    // window.location.href="listUser.html";
+                    console.log(data.id);
                     console.log(data.accessToken)
                     localStorage.setItem('token', data.accessToken)
                     showList(data.accessToken)
+                    localStorage.setItem('name',data.name);
+                    console.log(data.name)
+                },
+                error:
+                function (data){
+                    alert("sai tên đăng nhập hoặc mật khẩu")
+
                 }
 
             })

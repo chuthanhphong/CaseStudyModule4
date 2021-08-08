@@ -26,9 +26,8 @@ function menuComponent() {
         "          <a class=\"nav-link\" href=\"managerUser.html\">UserList</a>\n" +
         "        </li>\n" +
         "        <li class=\"nav-item dropdown\">\n" +
-        "          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n" +
-        "            Hello ${data.fullname}\n" +
-        "          </a>\n" +
+        "          <a class=\"nav-link dropdown-toggle\" id='data'   href=\"#\"  role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n " +
+        "         đưewewew </a>\n" +
         "          <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n" +
         "            <li><a class=\"dropdown-item\" href=\"#\">YourProfile</a></li>\n" +
         "            <li><a class=\"dropdown-item\" href=\"#\">Logout</a></li>\n" +
@@ -71,5 +70,20 @@ function mainHomeComponent() {
 function mainProfileComponent() {
     let str = "<div class=\"col-12\">Trang cá nhân</div>"
     document.getElementById('main').innerHTML = str;
+}
+function loaddata() {
+
+    document.getElementById("data").innerHTML = localStorage.getItem('name');
+}
+function logout() {
+    window.localStorage.removeItem('name')
+    window.localStorage.removeItem('token')
+    window.location.href="login.html"
+}
+function checkToken(){
+    if(localStorage.getItem('token')==null){
+        window.location.href="login.html"
+    }
+
 }
 
