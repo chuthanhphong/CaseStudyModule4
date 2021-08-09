@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api")
 @CrossOrigin("*")
@@ -18,24 +20,24 @@ public class WardControllerAPI {
     @Autowired
     private DistrictServiceImpl districtService;
 
-    @GetMapping("/{id}/wards")
-    public ResponseEntity<Iterable<Ward>> findAllByDistrictName(@PathVariable long id) {
-        for(District district: districtService.findAll()) {
-            if (district.getId() == id ) {
-                Iterable<Ward> wards = wardService.findAllByDistrictId(district.getId());
-                return new ResponseEntity<>(wards, HttpStatus.OK);
-            }
+    @GetMapping("/wards/{id}")
+    public ResponseEntity<Ward> findOneWard(@PathVariable long id) {
+        Optional<Ward> ward = wardService.findById(id);
+        if (!ward.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(ward.get(), HttpStatus.OK);
     }
+
     @PostMapping("/wards")
-    public ResponseEntity<Void> create (@RequestBody Ward ward) {
+    public ResponseEntity<Void> create(@RequestBody Ward ward) {
         wardService.save(ward);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
     @GetMapping("/wards")
     public ResponseEntity<Iterable<Ward>> findAll() {
         Iterable<Ward> wards = wardService.findAll();
-        return new ResponseEntity<>(wards,HttpStatus.OK);
+        return new ResponseEntity<>(wards, HttpStatus.OK);
     }
 }
