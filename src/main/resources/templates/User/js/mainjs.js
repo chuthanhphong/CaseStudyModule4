@@ -25,18 +25,21 @@ function menuComponent() {
         "        <li class=\"nav-item\">\n" +
         "          <a class=\"nav-link\" href=\"managerUser.html\">UserList</a>\n" +
         "        </li>\n" +
+        " <li class=\"nav-item\">\n" +
+        "          <a class=\"nav-link\" id='navbarDropdown'></a>\n" +
         "        <li class=\"nav-item dropdown\">\n" +
-        "          <a class=\"nav-link dropdown-toggle\" id='data'   href=\"#\"  role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n " +
-        "         đưewewew </a>\n" +
+        "          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n" +
+        "            Dropdown\n" +
+        "          </a>\n" +
         "          <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n" +
-        "            <li><a class=\"dropdown-item\" href=\"#\">YourProfile</a></li>\n" +
-        "            <li><a class=\"dropdown-item\" href=\"#\">Logout</a></li>\n" +
+        "            <li><a class=\"dropdown-item\" href=\"#\">Action</a></li>\n" +
+        "            <li><a class=\"dropdown-item\" href=\"#\">Another action</a></li>\n" +
         "            <li><hr class=\"dropdown-divider\"></li>\n" +
-        "            <li><a class=\"dropdown-item\" href=\"#\">About Us</a></li>\n" +
+        "            <li><a class=\"dropdown-item\" href=\"#\">Something else here</a></li>\n" +
         "          </ul>\n" +
         "        </li>\n" +
         "        <li class=\"nav-item\">\n" +
-        "          <a class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Disabled</a>\n" +
+        "          <a class=\"nav-link\" onclick='logout()' style='cursor: pointer'>Log Out</a>\n" +
         "        </li>\n" +
         "      </ul>\n" +
         "      <form class=\"d-flex\">\n" +
@@ -51,7 +54,8 @@ function menuComponent() {
 
 function mainHomeComponent() {
     let str = "<div class=\"col-3\" id='category'>Left</div>\n" +
-        "<div class=\"col-7\" id='post'>Mid</div>\n" +
+        "<div class=\"col-7\" id='post'>" +
+        "</div>\n" +
         "<div class=\"col-2\" id='new'>Right</div>"
     document.getElementById('main').innerHTML = str;
 }
@@ -60,30 +64,64 @@ function mainProfileComponent() {
     let str = "<div class=\"col-12\">Trang cá nhân</div>"
     document.getElementById('main').innerHTML = str;
 }
-function mainHomeComponent() {
-    let str = "<div class=\"col-3\" id='category'>Left</div>\n" +
-        "<div class=\"col-7\" id='post'>Mid</div>\n" +
-        "<div class=\"col-2\" id='new'>Right</div>"
-    document.getElementById('main').innerHTML = str;
-}
 
-function mainProfileComponent() {
-    let str = "<div class=\"col-12\">Trang cá nhân</div>"
-    document.getElementById('main').innerHTML = str;
-}
+// function mainHomeComponent() {
+//     let str = "<div class=\"col-3\" id='category'>Left</div>\n" +
+//         "<div class=\"col-7\" id='post'>Mid</div>\n" +
+//         "<div class=\"col-2\" id='new'>Right</div>"
+//     document.getElementById('main').innerHTML = str;
+// }
+
+// function mainProfileComponent() {
+//     let str = "<div class=\"col-12\">Trang cá nhân</div>"
+//     document.getElementById('main').innerHTML = str;
+// }
+
 function loaddata() {
 
-    document.getElementById("data").innerHTML = localStorage.getItem('name');
+    document.getElementById("navbarDropdown").innerHTML = "Hello " + localStorage.getItem('name');
 }
+
 function logout() {
     window.localStorage.removeItem('name')
     window.localStorage.removeItem('token')
-    window.location.href="login.html"
+    window.location.href = "login.html"
 }
-function checkToken(){
-    if(localStorage.getItem('token')==null){
-        window.location.href="login.html"
+
+function checkToken() {
+    if (localStorage.getItem('token') == null) {
+        window.location.href = "login.html"
     }
+}
+
+function formTable() {
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/",
+        // headers: {"Authorization": 'Bearer ' + token},
+        success: function (data) {
+            let str =
+                "<h1 style='margin-left: 30%'>UserList</h1>" +
+                "<table class=\"table\">\n" + "<tr>\n" +
+                "<th>FristName</th>\n" +
+                "<th>LastName</th>\n" +
+                "<th>image</th>\n" +
+                "<th>Username</th>\n" +
+                "<th>More</th>\n" +
+            "</tr>\n";
+            for (let i = 0; i < data.length; i++) {
+                str += "<tr><td>" + data[i].firstName;
+                str += "</td><td>" + data[i].lastName;
+                str += "</td><td>" + "<img width='80px' height='40px' src='" + data[i].image + "'/>";
+                str += "</td><td>" + data[i].username;
+                str += "</td><td>" +  "<button id='more'>More</button>\n" ;
+                console.log(data[i].image)
+                str += "</td>"
+            }
+            str += "</table>\n";
+            document.getElementById("post").innerHTML = str;
+        }
+    })
 
 }
 

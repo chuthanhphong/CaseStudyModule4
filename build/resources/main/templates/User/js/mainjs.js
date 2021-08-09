@@ -25,18 +25,21 @@ function menuComponent() {
         "        <li class=\"nav-item\">\n" +
         "          <a class=\"nav-link\" href=\"managerUser.html\">UserList</a>\n" +
         "        </li>\n" +
+       " <li class=\"nav-item\">\n" +
+    "          <a class=\"nav-link\" id='navbarDropdown'></a>\n" +
         "        <li class=\"nav-item dropdown\">\n" +
-        "          <a class=\"nav-link dropdown-toggle\" id='data'   href=\"#\"  role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n " +
+        "          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n" +
+        "            Dropdown\n" +
         "          </a>\n" +
         "          <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n" +
-        "            <li><a class=\"dropdown-item\" href=\"#\">YourProfile</a></li>\n" +
-        "            <li><a class=\"dropdown-item\" href=\"#\">Logout</a></li>\n" +
+        "            <li><a class=\"dropdown-item\" href=\"#\">Action</a></li>\n" +
+        "            <li><a class=\"dropdown-item\" href=\"#\">Another action</a></li>\n" +
         "            <li><hr class=\"dropdown-divider\"></li>\n" +
-        "            <li><a class=\"dropdown-item\" href=\"#\">About Us</a></li>\n" +
+        "            <li><a class=\"dropdown-item\" href=\"#\">Something else here</a></li>\n" +
         "          </ul>\n" +
         "        </li>\n" +
         "        <li class=\"nav-item\">\n" +
-        "          <a class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Disabled</a>\n" +
+        "          <a onclick='logout()' class=\"nav-link disabled\" href=\"#\" tabindex=\"-1\" aria-disabled=\"false\">log out</a>\n" +
         "        </li>\n" +
         "      </ul>\n" +
         "      <form class=\"d-flex\">\n" +
@@ -51,7 +54,8 @@ function menuComponent() {
 
 function mainHomeComponent() {
     let str = "<div class=\"col-3\" id='category'>Left</div>\n" +
-        "<div class=\"col-7\" id='post'>Mid</div>\n" +
+        "<div class=\"col-7\" id='post'>" + showList() +
+        "</div>\n" +
         "<div class=\"col-2\" id='new'>Right</div>"
     document.getElementById('main').innerHTML = str;
 }
@@ -72,27 +76,18 @@ function mainProfileComponent() {
     document.getElementById('main').innerHTML = str;
 }
 function loaddata() {
-    let username = $("#username1").val();
-    let password = $("#password1").val();
-    let user = {
-        "username": username,
-        "password": password
-    }
-    $.ajax({
-        headers: { "Authorization": 'Bearer ' + localStorage.getItem("token") },
-        type: "Post",
-        url: "http://localhost:8080/api/user/{id}",
-        data: JSON.stringify(user),
-        success: function (data) {
-            let str = data.name;
-            document.getElementById('data').innerHTML = str;
-            console.log(data)
-            // localStorage.getItem('token')
 
-        },
-        error: function (data) {
-            console.log(data);
-        }
-    });
+    document.getElementById("navbarDropdown").innerHTML = "Hello " + localStorage.getItem('name');
+}
+function logout() {
+    window.localStorage.removeItem('name')
+    window.localStorage.removeItem('token')
+    window.location.href="login.html"
+}
+function checkToken(){
+    if(localStorage.getItem('token')==null){
+        window.location.href="login.html"
+    }
+
 }
 
