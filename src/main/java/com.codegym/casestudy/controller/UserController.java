@@ -58,7 +58,14 @@ public class UserController {
         userService.save(user);
         return new ResponseEntity<>(userService.findById(user.getId()).get(), HttpStatus.OK);
     }
-
+     @GetMapping("/{id}")
+     public ResponseEntity findOne(@PathVariable Long id){
+         Optional<User> userOptional = userService.findById(id);
+         if (!userOptional.isPresent()) {
+             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+         }
+         return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
+     }
     @PutMapping("/edit/{id}")
     public ResponseEntity<User> EditAcount(@PathVariable Long id, @RequestBody User user) {
         Optional<User> userOptional = userService.findById(id);
@@ -89,6 +96,7 @@ public class UserController {
             return new ResponseEntity(user.get(),HttpStatus.OK);
         }
     }
+
 
 
 
