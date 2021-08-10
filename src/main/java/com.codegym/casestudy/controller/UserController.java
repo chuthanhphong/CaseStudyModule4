@@ -7,6 +7,8 @@ import com.codegym.casestudy.service.User.IUserService;
 import com.codegym.casestudy.service.jwt.JwtService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 

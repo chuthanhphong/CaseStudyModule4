@@ -26,7 +26,7 @@ public class User {
 
     private Set<Role> roles;
 
-    public User() {
+    public User(Long id, String firstName, String lastName, String email, String phoneNumber, String fileName, String address, String username, String password) {
     }
 
     public User(String username, String password) {
@@ -62,6 +62,10 @@ public class User {
         this.username = username;
         this.password = password;
         this.roles = roles;
+    }
+
+    public User() {
+
     }
 
     public Long getId() {
