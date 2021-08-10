@@ -138,7 +138,7 @@
         </div>
         <div class="form-group">
             <label  class="form-label">Image</label>
-            <input id="image" name="image" type="file" formenctype="multipart/form-data"  class="form-control">
+            <input id="image" name="image" type="text"  class="form-control">
             <span class="form-message"></span>
         </div>
         <div class="form-group">
@@ -249,7 +249,7 @@
                     alert("Bạn Đã Đăng Ký thành công")
                     formSignin()
                     console.log("A")
-                    document.getElementById('image').innerHTML = `${user.image}<img src="image/${user.image}">`
+
                 },
                 error: function (error) {
                     console.log(error)

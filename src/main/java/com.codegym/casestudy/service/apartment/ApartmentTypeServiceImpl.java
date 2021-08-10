@@ -1,7 +1,7 @@
 package com.codegym.casestudy.service.apartment;
 
 import com.codegym.casestudy.model.apartment.ApartmentType;
-import com.codegym.casestudy.repository.house.ApartmentTypeRepository;
+import com.codegym.casestudy.repository.apartment.ApartmentTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
