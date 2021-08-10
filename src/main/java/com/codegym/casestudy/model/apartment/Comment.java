@@ -1,4 +1,4 @@
-package com.codegym.casestudy.model.order;
+package com.codegym.casestudy.model.apartment;
 
 import com.codegym.casestudy.model.apartment.Apartment;
 import com.codegym.casestudy.model.user.User;
@@ -17,14 +17,12 @@ public class Comment {
     Apartment apartment;
     @ManyToOne
     private User user;
-    private String postTitle;
-    private String postContent;
+    private String cmtContent;
 
-    public Comment(Apartment apartment, User user, String postTitle, String postContent) {
+    public Comment(Apartment apartment, User user, String postContent) {
         this.apartment = apartment;
         this.user = user;
-        this.postTitle = postTitle;
-        this.postContent = postContent;
+        this.cmtContent = postContent;
     }
 
     public Comment() {

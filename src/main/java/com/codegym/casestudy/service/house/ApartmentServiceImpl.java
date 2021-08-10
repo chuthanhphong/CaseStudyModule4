@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
@@ -26,6 +28,7 @@ public class ApartmentServiceImpl implements IApartment{
 
     @Override
     public Apartment save(Apartment apartment) {
+        apartment.setCreatedTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")));
         return apartmentRepository.save(apartment);
     }
 
