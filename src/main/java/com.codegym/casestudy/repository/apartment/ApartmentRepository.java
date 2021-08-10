@@ -1,4 +1,4 @@
-package com.codegym.casestudy.repository.house;
+package com.codegym.casestudy.repository.apartment;
 
 import com.codegym.casestudy.model.apartment.Apartment;
 import org.springframework.data.jpa.repository.Query;

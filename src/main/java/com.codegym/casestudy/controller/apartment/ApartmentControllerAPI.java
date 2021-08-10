@@ -1,4 +1,4 @@
-package com.codegym.casestudy.controller.house;
+package com.codegym.casestudy.controller.apartment;
 
 import com.codegym.casestudy.model.apartment.Apartment;
 import com.codegym.casestudy.service.apartment.IApartment;

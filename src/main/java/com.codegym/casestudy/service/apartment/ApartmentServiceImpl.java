@@ -1,7 +1,7 @@
 package com.codegym.casestudy.service.apartment;
 
 import com.codegym.casestudy.model.apartment.Apartment;
-import com.codegym.casestudy.repository.house.ApartmentRepository;
+import com.codegym.casestudy.repository.apartment.ApartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
