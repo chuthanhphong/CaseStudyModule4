@@ -3,6 +3,7 @@ package com.codegym.casestudy.service.User;
 
 
 
+import com.codegym.casestudy.model.comment.Comment;
 import com.codegym.casestudy.model.user.User;
 import com.codegym.casestudy.model.user.UserPrinciple;
 import com.codegym.casestudy.repository.user.IUserRepository;

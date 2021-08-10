@@ -1,6 +1,6 @@
 package com.codegym.casestudy.service;
 
-import org.springframework.security.core.userdetails.UserDetails;
+import com.codegym.casestudy.model.comment.Comment;
 
 import java.util.Optional;
 

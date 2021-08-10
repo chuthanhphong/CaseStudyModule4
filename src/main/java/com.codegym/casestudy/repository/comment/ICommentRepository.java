@@ -2,7 +2,6 @@ package com.codegym.casestudy.repository.comment;
 
 import com.codegym.casestudy.model.comment.Comment;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 

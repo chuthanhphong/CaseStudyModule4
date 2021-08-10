@@ -1,6 +1,7 @@
 package com.codegym.casestudy.service.address;
 
 import com.codegym.casestudy.model.address.District;
+import com.codegym.casestudy.model.comment.Comment;
 import com.codegym.casestudy.repository.address.DistrictRepository;
 import com.codegym.casestudy.service.IGeneralService;
 import org.springframework.beans.factory.annotation.Autowired;

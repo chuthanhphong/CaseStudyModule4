@@ -1,5 +1,6 @@
 package com.codegym.casestudy.service.image;
 
+import com.codegym.casestudy.model.comment.Comment;
 import com.codegym.casestudy.model.image.Image;
 import com.codegym.casestudy.repository.image.IImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
