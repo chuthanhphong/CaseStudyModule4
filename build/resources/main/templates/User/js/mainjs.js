@@ -125,95 +125,94 @@ function formTable() {
 
 }
 
-function infoUser(id){
+function infoUser(id) {
     $.ajax({
 
         type: "GET",
         url: "http://localhost:8080/api/" + id,
 
         success: function (data) {
-//           let firstname = data.firstName;
-//           let lastname = data.lastName;
-//           let email = data.email;
-//           let phoneNumber = data.phoneNumber;
-//           let image = data.image;
-//           let address = data.address;
-//           let username = data.username;
-//           let password = data.password;
-//         let str = `<div class="form" id="form-1">
-//         <h3 class="heading">Tài Khoản User</h3>
-//
-//
-//         <div class="spacer"></div>
-// edit
-//         <div class="form-group">
-//             <label for="fullname" class="form-label">FistName:</label>
-//             <input id="firstnameedit" name="firstname" type="text" class="form-control" value="${firstname}">
-//             <span class="form-message"></span>
-//         </div>
-//         <div class="form-group">
-//             <label for="fullname" class="form-label">LastName:</label>
-//             <input id="lastnameedit" name="lastname" type="text"  class="form-control" value="${lastname}">
-//             <span class="form-message"></span>
-//         </div>
-//
-//         <div class="form-group">
-//             <label for="email" class="form-label">Email</label>
-//             <input id="emailedit" name="email" type="text" placeholder="VD: email@domain.com" class="form-control" value="${email}">
-//             <span class="form-message"></span>
-//         </div>
-//         <div class="form-group">
-//             <label  class="form-label">Image</label>
-//             <input name="imageedit" type="text"  class="form-control" value="${image}">
-//             <span class="form-message"></span>
-//         </div>
-//         <div class="form-group">
-//             <label for="fullname" class="form-label">PhoneNumber</label>
-//             <input id="phonenumberedit" name="phoneNumber" type="text"  class="form-control" ${phoneNumber}>
-//             <span class="form-message"></span>
-//         </div>
-//         <div class="form-group">
-//             <label for="fullname" class="form-label">Address:</label>
-//             <input id="addressedit" name="address" type="text" placeholder="VD: Sơn Đặng" class="form-control" ${address}>
-//             <span class="form-message"></span>
-//         </div>
-//         <div class="form-group">
-//             <label for="fullname" class="form-label">UserName:</label>
-//             <input id="usernameedit" name="username" type="text" placeholder="VD:ltyn" class="form-control" value="${username}" disabled>
-//             <span class="form-message"></span>
-//         </div>
-//
-//         <div class="form-group">
-//             <label for="password" class="form-label">Mật khẩu</label>
-//             <input id="passwordedit" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control" value="${password}">
-//             <span class="form-message"></span>
-//         </div>
-//
-//         <div class="form-group">
-//             <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
-//             <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control" value="${password}">
-//             <span class="form-message"></span>
-//         </div>
-//
-//         <button class="form-submit" onclick="edit()">Thay Đổi</button>
-//         <button class="form-submit" onclick="delete ()">Xóa Tài Khoản </button>
-//     </div>\``
-//    document.getElementById("more").innerHTML=str;
-//         }
-//     }
-            console.log(data)
+            let firstname = data.firstName;
+            let lastname = data.lastName;
+            let email = data.email;
+            let phoneNumber = data.phoneNumber;
+            let image = data.image;
+            let address = data.address;
+            let username = data.username;
+            let password = data.password;
+            let str = `<div class="form" id="form-1">
+        <h3 class="heading">Tài Khoản ${username}</h3>
+
+
+        <div class="spacer"></div>
+edit
+        <div class="form-group">
+            <label for="fullname" class="form-label">FistName:</label>
+            <input id="firstnameedit" name="firstname" type="text" class="form-control" value="${firstname}">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="fullname" class="form-label">LastName:</label>
+            <input id="lastnameedit" name="lastname" type="text"  class="form-control" value="${lastname}">
+            <span class="form-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input id="emailedit" name="email" type="text" placeholder="VD: email@domain.com" class="form-control" value="${email}">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label  class="form-label">Image</label>
+            <input id="imageedit" name="imageedit" type="text"  class="form-control" value="${image}">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="fullname" class="form-label">PhoneNumber</label>
+            <input id="phonenumberedit" name="phoneNumber" type="text"  class="form-control"  value=" ${phoneNumber}">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="fullname" class="form-label">Address:</label>
+            <input id="addressedit" name="address" type="text" placeholder="VD: Sơn Đặng" class="form-control" value=" ${address}">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="fullname" class="form-label">UserName:</label>
+            <input id="usernameedit" name="username" type="text" placeholder="VD:ltyn" class="form-control" value="${username}" disabled>
+            <span class="form-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="form-label">Mật khẩu</label>
+            <input id="passwordedit" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control" ">
+            <span class="form-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
+            <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control" ">
+            <span class="form-message"></span>
+        </div>
+
+        <button class="form-submit" onclick="editUser(${id})">Thay Đổi</button>
+        <button class="form-submit" onclick="deleteUser(${id})">Xóa Tài Khoản </button>
+    </div>\``
+            document.getElementById("post").innerHTML = str;
         }
     })
-function edit(){
+}
+function editUser(id){
     let fistName = document.getElementById("firstnameedit").value;
     let lastName =document.getElementById("lastnameedit").value;
     let email = document.getElementById("emailedit").value;
     let image = document.getElementById("imageedit").value;
-    let phoneNumber = document.getElementById(phonenumberedit).value;
+    let phoneNumber = document.getElementById("phonenumberedit").value;
     let address = document.getElementById("addressedit").value;
     let username = document.getElementById("usernameedit").value;
     let password = document.getElementById("passwordedit").value;
     let user = {
+
         "fistName" :fistName,
         "lastName":lastName,
         "email":email,
@@ -229,12 +228,39 @@ function edit(){
             'Content-type': 'application/json'
         },
         type: "PUT",
-        data: JSON.stringify(data),
+        data: JSON.stringify(user),
         url: "http://localhost:8080/api/edit/" +id,
         success: function () {
-            showList(), alert("bạn đã cập nhật thành công")
+            formTable(), alert("bạn đã cập nhật thành công")
         },
         error : console.log("abc")
     })
     event.preventDefault();
-}}
+}
+
+function deleteUser(id){
+
+    let txt
+    let  r = confirm("Bạn muốn xóa hay không");
+    if (r == true) {
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            type: "DELETE",
+            url: "http://localhost:8080/api/delete/" +id,
+            success: function (){
+                txt = "Bạn đã xóa thành công";
+                alert(txt)
+                formTable()
+            }
+        })
+    } else {
+        txt = "Bạn chưa xóa gì cả";
+        alert(txt)
+        formTable()
+    }
+
+
+}

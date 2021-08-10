@@ -16,6 +16,7 @@ public class User {
     private String phoneNumber;
     private String image;
     private String address;
+    @Column(unique = true)
     private String username;
     private String password;
     @ManyToMany(fetch = FetchType.LAZY)

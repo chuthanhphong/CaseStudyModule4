@@ -2,6 +2,7 @@ package com.codegym.casestudy.controller;
 
 import com.codegym.casestudy.model.user.JwtResponse;
 import com.codegym.casestudy.model.user.User;
+import com.codegym.casestudy.model.user.UserForm;
 import com.codegym.casestudy.service.User.IUserService;
 import com.codegym.casestudy.service.jwt.JwtService;
 
@@ -14,9 +15,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +29,8 @@ import java.util.Optional;
 @RequestMapping("/api")
 @CrossOrigin("*")
 public class UserController {
+
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -58,6 +65,7 @@ public class UserController {
         userService.save(user);
         return new ResponseEntity<>(userService.findById(user.getId()).get(), HttpStatus.OK);
     }
+
      @GetMapping("/{id}")
      public ResponseEntity findOne(@PathVariable Long id){
          Optional<User> userOptional = userService.findById(id);
