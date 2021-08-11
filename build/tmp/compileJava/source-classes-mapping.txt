@@ -102,7 +102,7 @@ com.codegym/casestudy/service/rent/IRentService.java
  com.codegym.casestudy.service.rent.IRentService
 com.codegym/casestudy/service/rent/RentServiceImpl.java
  com.codegym.casestudy.service.rent.RentServiceImpl
-com.codegym/casestudy/repository/rent/RentRepository.java
- com.codegym.casestudy.repository.rent.RentRepository
 com.codegym/casestudy/controller/rent/RentControllerAPI.java
  com.codegym.casestudy.controller.rent.RentControllerAPI
+com.codegym/casestudy/repository/rent/RentRepository.java
+ com.codegym.casestudy.repository.rent.RentRepository

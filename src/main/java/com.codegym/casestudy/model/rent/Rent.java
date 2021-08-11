@@ -32,6 +32,13 @@ public class Rent {
         this.status = status;
     }
 
+    public Rent(User user, Apartment apartment, String startDate, Status status) {
+        this.user = user;
+        this.apartment = apartment;
+        this.startDate = startDate;
+        this.status = status;
+    }
+
     public Rent() {
     }
 }

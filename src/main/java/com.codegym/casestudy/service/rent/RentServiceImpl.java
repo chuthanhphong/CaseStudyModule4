@@ -50,4 +50,9 @@ public class RentServiceImpl implements IRentService{
     public Iterable<Rent> findAllByApartment_UserId(Long id) {
         return rentRepository.findAllByApartment_UserId(id);
     }
+
+    @Override
+    public Iterable<Rent> findAllByApartment_UserIdAndStatusId(Long id, Long statusId) {
+        return rentRepository.findAllByApartment_UserIdAndStatusId(id, statusId);
+    }
 }

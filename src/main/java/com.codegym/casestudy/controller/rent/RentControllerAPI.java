@@ -49,6 +49,15 @@ public class RentControllerAPI {
         return new ResponseEntity<>(personalRents, HttpStatus.OK);
     }
 
+    @GetMapping("rents/{id}/{statusId}/list")
+    public ResponseEntity<Iterable<Rent>> findAllByOwnerAndStatus(@PathVariable long id, @PathVariable Long statusId) {
+        List<Rent> personalRents = (List<Rent>) rentService.findAllByApartment_UserIdAndStatusId(id, statusId);
+        if (personalRents.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(personalRents, HttpStatus.OK);
+    }
+
     @GetMapping("/{userID}/rentList")
     public ResponseEntity<Iterable<Rent>> findAllByUserId(@PathVariable long userID) {
         Iterable<Rent> personalRents = rentService.findAllByUserId(userID);
