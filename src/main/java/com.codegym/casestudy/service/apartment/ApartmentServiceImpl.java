@@ -69,4 +69,9 @@ public class ApartmentServiceImpl implements IApartment {
     public Iterable<Apartment> findAllByPrice(int low, int high) {
         return apartmentRepository.findAllByPriceBetween(low, high);
     }
+
+    @Override
+    public Iterable<Apartment> findAllByUserId(Long userId) {
+        return apartmentRepository.findAllByUserId(userId);
+    }
 }

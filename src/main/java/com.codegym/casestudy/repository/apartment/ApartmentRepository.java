@@ -22,6 +22,6 @@ public interface ApartmentRepository extends PagingAndSortingRepository<Apartmen
 
     Iterable<Apartment> findAllByPriceBetween(int low, int high);
 
-
+    Iterable<Apartment> findAllByUserId(Long userId);
 
 }

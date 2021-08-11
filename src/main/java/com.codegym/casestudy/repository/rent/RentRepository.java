@@ -10,4 +10,8 @@ public interface RentRepository extends PagingAndSortingRepository<Rent,Long> {
 
     @Query("select rent from Rent rent where rent.user.id =?1 ")
     Iterable<Rent> findAllByUserId(long id);
+
+    Iterable<Rent> findAllByStatusIdAndUserId(Long statusId, Long userId);
+
+    Iterable<Rent> findAllByApartment_UserId(Long id);
 }

@@ -1,5 +1,5 @@
-com.codegym/casestudy/service/rent/RentServiceImpl.java
- com.codegym.casestudy.service.rent.RentServiceImpl
+com.codegym/casestudy/repository/apartment/ApartmentRepository.java
+ com.codegym.casestudy.repository.apartment.ApartmentRepository
 com.codegym/casestudy/model/address/District.java
  com.codegym.casestudy.model.address.District
 com.codegym/casestudy/config/RestAuthenticationEntryPoint.java
@@ -8,14 +8,14 @@ com.codegym/casestudy/service/image/IImageService.java
  com.codegym.casestudy.service.image.IImageService
 com.codegym/casestudy/service/User/IUserService.java
  com.codegym.casestudy.service.User.IUserService
-com.codegym/casestudy/model/rent/Rent.java
- com.codegym.casestudy.model.rent.Rent
+com.codegym/casestudy/service/apartment/ApartmentServiceImpl.java
+ com.codegym.casestudy.service.apartment.ApartmentServiceImpl
 com.codegym/casestudy/model/apartment/Rate.java
  com.codegym.casestudy.model.apartment.Rate
 com.codegym/casestudy/model/user/User.java
  com.codegym.casestudy.model.user.User
-com.codegym/casestudy/service/apartment/IApartment.java
- com.codegym.casestudy.service.apartment.IApartment
+com.codegym/casestudy/controller/comment/CommentController.java
+ com.codegym.casestudy.controller.comment.CommentController
 com.codegym/casestudy/controller/apartment/ApartmentTypeControllerAPI.java
  com.codegym.casestudy.controller.apartment.ApartmentTypeControllerAPI
 com.codegym/casestudy/repository/user/IUserRepository.java
@@ -30,8 +30,8 @@ com.codegym/casestudy/config/CustomAccessDeniedHandler.java
  com.codegym.casestudy.config.CustomAccessDeniedHandler
 com.codegym/casestudy/service/apartment/ApartmentTypeServiceImpl.java
  com.codegym.casestudy.service.apartment.ApartmentTypeServiceImpl
-com.codegym/casestudy/service/rent/IRentService.java
- com.codegym.casestudy.service.rent.IRentService
+com.codegym/casestudy/model/rent/Status.java
+ com.codegym.casestudy.model.rent.Status
 com.codegym/casestudy/repository/user/IRoleRepository.java
  com.codegym.casestudy.repository.user.IRoleRepository
 com.codegym/casestudy/service/address/IWardService.java
@@ -46,28 +46,28 @@ com.codegym/casestudy/model/apartment/ApartmentType.java
  com.codegym.casestudy.model.apartment.ApartmentType
 com.codegym/casestudy/service/address/WardServiceImpl.java
  com.codegym.casestudy.service.address.WardServiceImpl
-com.codegym/casestudy/service/apartment/ApartmentServiceImpl.java
- com.codegym.casestudy.service.apartment.ApartmentServiceImpl
+com.codegym/casestudy/service/comment/CommentService.java
+ com.codegym.casestudy.service.comment.CommentService
 com.codegym/casestudy/CasestudyApplication.java
  com.codegym.casestudy.CasestudyApplication
 com.codegym/casestudy/service/IGeneralService.java
  com.codegym.casestudy.service.IGeneralService
 com.codegym/casestudy/service/image/ImageServiceImpl.java
  com.codegym.casestudy.service.image.ImageServiceImpl
-com.codegym/casestudy/repository/rent/RentRepository.java
- com.codegym.casestudy.repository.rent.RentRepository
+com.codegym/casestudy/controller/apartment/ApartmentControllerAPI.java
+ com.codegym.casestudy.controller.apartment.ApartmentControllerAPI
 com.codegym/casestudy/repository/address/DistrictRepository.java
  com.codegym.casestudy.repository.address.DistrictRepository
 com.codegym/casestudy/model/user/JwtResponse.java
  com.codegym.casestudy.model.user.JwtResponse
 com.codegym/casestudy/model/user/UserPrinciple.java
  com.codegym.casestudy.model.user.UserPrinciple
-com.codegym/casestudy/controller/apartment/ApartmentControllerAPI.java
- com.codegym.casestudy.controller.apartment.ApartmentControllerAPI
+com.codegym/casestudy/service/apartment/IApartment.java
+ com.codegym.casestudy.service.apartment.IApartment
 com.codegym/casestudy/controller/image/ImageController.java
  com.codegym.casestudy.controller.image.ImageController
-com.codegym/casestudy/controller/rent/RentControllerAPI.java
- com.codegym.casestudy.controller.rent.RentControllerAPI
+com.codegym/casestudy/model/apartment/Comment.java
+ com.codegym.casestudy.model.apartment.Comment
 com.codegym/casestudy/controller/address/WardControllerAPI.java
  com.codegym.casestudy.controller.address.WardControllerAPI
 com.codegym/casestudy/service/apartment/IApartmentType.java
@@ -82,8 +82,8 @@ com.codegym/casestudy/model/user/Role.java
  com.codegym.casestudy.model.user.Role
 com.codegym/casestudy/repository/comment/ICommentRepository.java
  com.codegym.casestudy.repository.comment.ICommentRepository
-com.codegym/casestudy/repository/apartment/ApartmentRepository.java
- com.codegym.casestudy.repository.apartment.ApartmentRepository
+com.codegym/casestudy/model/comment/Comment.java
+ com.codegym.casestudy.model.comment.Comment
 com.codegym/casestudy/repository/image/IImageRepository.java
  com.codegym.casestudy.repository.image.IImageRepository
 com.codegym/casestudy/repository/address/WardRepository.java
@@ -96,11 +96,13 @@ com.codegym/casestudy/model/user/UserForm.java
  com.codegym.casestudy.model.user.UserForm
 com.codegym/casestudy/service/User/UserService.java
  com.codegym.casestudy.service.User.UserService
-com.codegym/casestudy/model/comment/Comment.java
- com.codegym.casestudy.model.comment.Comment
-com.codegym/casestudy/controller/comment/CommentController.java
- com.codegym.casestudy.controller.comment.CommentController
-com.codegym/casestudy/service/comment/CommentService.java
- com.codegym.casestudy.service.comment.CommentService
-com.codegym/casestudy/model/apartment/Comment.java
- com.codegym.casestudy.model.apartment.Comment
+com.codegym/casestudy/model/rent/Rent.java
+ com.codegym.casestudy.model.rent.Rent
+com.codegym/casestudy/service/rent/IRentService.java
+ com.codegym.casestudy.service.rent.IRentService
+com.codegym/casestudy/service/rent/RentServiceImpl.java
+ com.codegym.casestudy.service.rent.RentServiceImpl
+com.codegym/casestudy/repository/rent/RentRepository.java
+ com.codegym.casestudy.repository.rent.RentRepository
+com.codegym/casestudy/controller/rent/RentControllerAPI.java
+ com.codegym.casestudy.controller.rent.RentControllerAPI

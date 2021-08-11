@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -26,6 +27,15 @@ public class ApartmentControllerAPI {
     public ResponseEntity<Void> create(@RequestBody Apartment apartment) {
         apartmentService.save(apartment);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{userId}/list")
+    public ResponseEntity<Iterable<Apartment>> findAllByUser(@PathVariable Long userId){
+        List<Apartment> apartments = (List<Apartment>) apartmentService.findAllByUserId(userId);
+        if (apartments.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(apartments, HttpStatus.OK);
     }
 
     @GetMapping("/{id}/detail")

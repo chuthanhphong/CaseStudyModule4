@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +23,13 @@ public class Rent {
     private String createDate;
     private String startDate;
     private String endDate;
+    @ManyToOne
+    private Status status;
 
-    public Rent(User user, Apartment apartment) {
+    public Rent(User user, Apartment apartment, Status status) {
         this.user = user;
         this.apartment = apartment;
+        this.status = status;
     }
 
     public Rent() {
