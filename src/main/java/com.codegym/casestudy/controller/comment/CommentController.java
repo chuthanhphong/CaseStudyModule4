@@ -6,23 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/comments")
+@CrossOrigin("*")
+@RequestMapping("/comments")
 public class CommentController {
     @Autowired
    private ICommentService iCommentService ;
-    @GetMapping
+    @GetMapping("")
     public ResponseEntity<Iterable<Comment>> findAll(){
-        Iterable<Comment> products = iCommentService.findAll();
-        return new ResponseEntity<>(products, HttpStatus.OK);
+        Iterable<Comment> comments = iCommentService.findAll();
+        return new ResponseEntity<>(comments, HttpStatus.OK);
     }
 
 
-    @PostMapping
-    public ResponseEntity<Comment> createProduct(@RequestBody Comment comment) {
+    @PostMapping("")
+    public ResponseEntity<Comment> createComment(@RequestBody Comment comment) {
         return new ResponseEntity<>(iCommentService.save(comment), HttpStatus.CREATED);
     }
     @GetMapping("/{id}")
@@ -51,5 +53,10 @@ public class CommentController {
         iCommentService.delete(id);
         return new ResponseEntity<>(productOptional.get(),HttpStatus.NO_CONTENT);
     }
-
+    @GetMapping("/list")
+    public ModelAndView getAllCmt() {
+        ModelAndView modelAndView = new ModelAndView("/comment/list");
+        modelAndView.addObject("comments", iCommentService.findAll());
+        return modelAndView;
+    }
 }

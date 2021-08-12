@@ -1,5 +1,6 @@
 package com.codegym.casestudy.model.comment;
 import com.codegym.casestudy.model.apartment.Apartment;
+import com.codegym.casestudy.model.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,16 +14,18 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date dateCmt;
+
     private String postContent;
     @ManyToOne
     private Apartment apartment;
+    @ManyToOne
+    private User user;
 
-    public Comment(Long id, Date dateCmt, String postContent, Apartment apartment) {
+    public Comment(Long id,  String postContent, Apartment apartment, User user) {
         this.id = id;
-        this.dateCmt = dateCmt;
         this.postContent = postContent;
         this.apartment = apartment;
+        this.user = user;
     }
 
     public Comment() {

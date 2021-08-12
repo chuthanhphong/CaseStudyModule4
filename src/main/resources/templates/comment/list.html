@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>postContent</td>
+            <td><input type="text" id="postContent" placeholder="postContent"></td>
+        </tr>
+        <tr>
+            <td>apartment</td>
+            <td>
+                <select id="apartment">
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>user</td>
+            <td>
+                <select id="user"></select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Post" onclick="createNewCmt()"></td>
+        </tr>
+    </table>
+<h1>comment list</h1>
+<table id="cmtList" border="1">
+    <tr>
+        <td>postContent</td>
+        <td>apartment</td>
+        <td>user</td>
+        <td>Delete</td>
+    </tr>
+    <th:block th:each="comment: ${comments}">
+        <tr>
+            <td th:text="${comment.postContent}"></td>
+            <td th:text="${comment.apartment.getDescription()}"></td>
+            <td th:text="${comment.user.getUsername()}"></td>
+            <td><a class="deleteComment" th:href="${comment.getId()}">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+window.onload= function () {
+    successHandler()
+    findAllApartment()
+    findAllUser()
+}
+    //create
+    function createNewCmt() {
+        let postContent = $('#postContent').val();
+        let apartment = $('#apartment').val();
+        let user = $('#user').val();
+        let newCmt = {
+            postContent: postContent,
+            apartment: {
+                id: apartment
+            },
+            user: {
+                id: user
+            },
+
+        };
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            data: JSON.stringify(newCmt),
+            url: "/comments",
+            success: successHandler
+        })
+        event.preventDefault();
+    }
+
+    function successHandler() {
+        $.ajax({
+            type: "GET",
+            url: "/comments",
+            success: function (data) {
+                let content = '    <tr>\n' +
+                    '        <td>postContent</td>\n' +
+                    '        <td>apartment</td>\n' +
+                    '        <td>user</td>\n' +
+                    '    </tr>';
+                for (let i = 0; i < data.length; i++) {
+                    content += getCmt(data[i]);
+                }
+                document.getElementById('cmtList').innerHTML = content;
+            }
+        });
+    }
+
+function getCmt(comment) {
+    return `<tr><td >${comment.postContent}</td><td >${comment.apartment.description}</td><td >${comment.user.username}</td>` +
+        `<td><a class="deleteComment" href="${comment.id}">Delete</a></td></tr>`;
+}
+
+$(document).ready(function () {
+    //sư kiện nào thực hiện Ajax
+    $('.deleteComment').click(function (event) {
+        //lay du lieu
+        let a = $(this);
+        let commentId = a.attr("href");
+        // goi ajax
+        $.ajax({
+            type: "DELETE",
+            //tên API
+            url: `/comments/${commentId}`,
+            //xử lý khi thành công
+            success: function (data) {
+                a.parent().parent().remove();
+            }
+
+        });
+        //chặn sự kiện mặc định của thẻ
+        event.preventDefault();
+    });
+})
+    function findAllApartment() {
+        $.ajax({
+            type: "GET",
+            url: "/api/apartments",
+            success: function (data) {
+                let content = '';
+                for (let i = 0; i < data.length; i++) {
+                    content += getApartment(data[i]);
+                }
+                document.getElementById('apartment').innerHTML = content;
+            }
+        })
+    }
+    function getApartment(apartment) {
+        return `<option value="${apartment.id}">${apartment.description}</option>`;
+    }
+    function findAllUser() {
+        $.ajax({
+            type: "GET",
+            url: "/api",
+            success: function (data) {
+                let content = '';
+                for (let i = 0; i < data.length; i++) {
+                    content += getUser(data[i]);
+                }
+                document.getElementById('user').innerHTML = content;
+            }
+        })
+    }
+    function getUser(user) {
+        return `<option value="${user.id}">${user.username}</option>`;
+    }
+</script>
+</body>
+</html>
