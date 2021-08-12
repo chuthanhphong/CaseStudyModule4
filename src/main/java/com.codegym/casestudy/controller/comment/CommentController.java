@@ -52,5 +52,10 @@ public class CommentController {
         iCommentService.delete(id);
         return new ResponseEntity<>(productOptional.get(),HttpStatus.NO_CONTENT);
     }
+    @GetMapping("findAll/{id}")
+    public ResponseEntity<Iterable<Comment>> findAll(@PathVariable Long id, @RequestBody Comment comment){
+        Iterable<Comment> comments = iCommentService.findAllCommentByApartmentId(id);
+        return new ResponseEntity<>(comments, HttpStatus.OK);
+    }
 
 }
