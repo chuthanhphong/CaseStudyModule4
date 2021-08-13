@@ -23,10 +23,7 @@ public class WardControllerAPI {
     @GetMapping("/wards/{id}")
     public ResponseEntity<Ward> findOneWard(@PathVariable long id) {
         Optional<Ward> ward = wardService.findById(id);
-        if (!ward.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(ward.get(), HttpStatus.OK);
+        return ward.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping("/wards")
